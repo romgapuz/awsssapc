@@ -12,6 +12,5 @@ See running demo here <http://awsssapc.liveon.cloud/index.html>.
 ### Components:
 
 - **index.html** - contains the HTML and Javascript code of the calculator. It references to add'l Javascript code under *js* folder.
-- **scraper** - is built on *Python* with [Zappa](https://github.com/Miserlou/Zappa) and [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
-data
+- **scraper** - is built on *Python* with [Zappa](https://github.com/Miserlou/Zappa) and [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/).
 - **data** - contains *sample* json files for the EC2 On-Demand and Reserved Instance pricing. These files are kept here for reference only and will not be regularly (if ever) updated.
