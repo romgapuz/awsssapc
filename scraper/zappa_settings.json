@@ -1,0 +1,298 @@
+{
+    "sap": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_saps_instances",
+                "kwargs": {
+                    "bucket": "awsssapc"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "ondemand": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_ondemand_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "operating_system": "linux"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_ondemand_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "operating_system": "suse"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_ondemand_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "operating_system": "windows"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "nuri": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "linux",
+                    "purchase_option": "nu"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "suse",
+                    "purchase_option": "nu"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows",
+                    "purchase_option": "nu"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "puri": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "linux",
+                    "purchase_option": "pu"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "suse",
+                    "purchase_option": "pu"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows",
+                    "purchase_option": "pu"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "auri": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "linux",
+                    "purchase_option": "au"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "suse",
+                    "purchase_option": "au"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows",
+                    "purchase_option": "au"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "od_winsql": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_ondemand_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "operating_system": "windows-std"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_ondemand_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "operating_system": "windows-enterprise"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "nuri_winsql": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows-std",
+                    "purchase_option": "nu"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows-enterprise",
+                    "purchase_option": "nu"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "puri_winsql": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows-std",
+                    "purchase_option": "pu"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows-enterprise",
+                    "purchase_option": "pu"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    },
+    "auri_winsql": {
+        "aws_region": "ap-southeast-1",
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.7",
+        "apigateway_enabled": false,
+        "keep_warm": false,
+        "s3_bucket": "zappa-awssapc",
+        "events": [
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows-std",
+                    "purchase_option": "au"
+                },
+                "expression": "rate(1 day)"
+            },
+            {
+                "function": "scraper.scrape_reservedinstance_pricing",
+                "kwargs": {
+                    "bucket": "awsssapc",
+                    "pricing_option": "reserved-instance",
+                    "operating_system": "windows-enterprise",
+                    "purchase_option": "au"
+                },
+                "expression": "rate(1 day)"
+            }
+        ]
+    }
+}

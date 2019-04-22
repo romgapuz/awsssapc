@@ -1,0 +1,2 @@
+beautifulsoup4==4.7.1
+zappa==0.48.2
