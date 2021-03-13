@@ -3,6 +3,12 @@ from bs4 import BeautifulSoup
 import ref
 import utility
 
+def bool_check(str):
+    try:
+        return ord(str.text.replace('*', '')) == 10003
+    except:
+        return True
+
 def scrape_saps_instances(event, context):
     kwargs = event.get('kwargs')
 
@@ -33,9 +39,9 @@ def scrape_saps_instances(event, context):
                 'vcpu': int(cols[1].text.replace('*', '')),
                 'mem': float(cols[2].text.replace(',', '')),
                 'saps': int(cols[3].text.replace(',', '')),
-                'scale_up': (ord(cols[4].text.replace('*', '')) == 10003),
-                'scale_out': (ord(cols[5].text.replace('*', '')) == 10003),
-                'b1_hana': (ord(cols[6].text.replace('*', '')) == 10003),
+                'scale_up': bool_check(cols[4]),
+                'scale_out': bool_check(cols[5]),
+                'b1_hana': bool_check(cols[6]),
                 'new': generation
             }
 
@@ -56,11 +62,11 @@ def scrape_ondemand_pricing(event, context):
     if region is None:
         # loop through regions
         for item in ref.regions:
-            od_load_parse_save(item, pricing_option, operating_system)
+            od_load_parse_save(bucket, item, pricing_option, operating_system)
     else:
-        od_load_parse_save(region, pricing_option, operating_system)
+        od_load_parse_save(bucket, region, pricing_option, operating_system)
 
-def od_load_parse_save(region, pricing_option, operating_system):
+def od_load_parse_save(bucket, region, pricing_option, operating_system):
     # get pricing for select region
     raw = utility.get_pricing(region, pricing_option, operating_system)
 
@@ -87,12 +93,12 @@ def scrape_reservedinstance_pricing(event, context):
         # loop through regions
         for item in ref.regions:
             # load, parse and save to S3
-            ri_load_parse_save(raw, item, pricing_option, operating_system, purchase_option)
+            ri_load_parse_save(bucket, item, pricing_option, operating_system, purchase_option)
     else:
         # parse and save to S3
-        ri_load_parse_save(raw, region, pricing_option, operating_system, purchase_option)
+        ri_load_parse_save(bucket, region, pricing_option, operating_system, purchase_option)
 
-def ri_load_parse_save(raw, region, pricing_option, operating_system, purchase_option):
+def ri_load_parse_save(bucket, region, pricing_option, operating_system, purchase_option):
     data_standard_1yr = {}
     data_standard_3yr = {}
     data_convertible_1yr = {}
